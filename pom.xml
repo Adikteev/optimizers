@@ -21,6 +21,7 @@
     <scala.version>2.12.7</scala.version>
     <scala.compat.version>2.12</scala.compat.version>
     <spec2.version>4.2.0</spec2.version>
+    <breeze.version>0.13.2</breeze.version>
   </properties>
 
   <dependencies>
@@ -54,6 +55,21 @@
       <artifactId>specs2-junit_${scala.compat.version}</artifactId>
       <version>${spec2.version}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.scalanlp</groupId>
+      <artifactId>breeze_${scala.compat.version}</artifactId>
+      <version>${breeze.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.scalanlp</groupId>
+      <artifactId>breeze-natives_${scala.compat.version}</artifactId>
+      <version>${breeze.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.scalanlp</groupId>
+      <artifactId>breeze-viz_${scala.compat.version}</artifactId>
+      <version>${breeze.version}</version>
     </dependency>
   </dependencies>
 
