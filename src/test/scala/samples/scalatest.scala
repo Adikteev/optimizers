@@ -25,6 +25,9 @@ http://www.scalatest.org/
 One way to use ScalaTest is to help make JUnit or TestNG tests more
 clear and concise. Here's an example:
 */
+import breeze.linalg.DenseMatrix
+import com.adikteev.TreeParzenEstimator
+
 import scala.collection._
 import org.scalatest.Assertions
 import org.junit.Test
@@ -85,10 +88,24 @@ A Map
 - should report its size as the number of key/value pairs it contains
 */
 import org.scalatest.FunSpec
+import breeze.linalg._
+import breeze.numerics.{round, _}
+import breeze.stats.{mean, stddev}
 
 class ExampleSpec extends FunSpec {
 
   describe("An ArrayStack") {
+
+    it("should produce a one dimensional sample") {
+      val samples : DenseMatrix[Double] = TreeParzenEstimator.GMM1(Array(.9999, .0001), Array(0.0, 1.0), Array(0.000001, 0.000001), size = List(1000))
+      assert(samples.rows === 1000)
+//      # import matplotlib.pyplot as plt
+//      # plt.hist(samples)
+//      # plt.show()
+      assert(-.001 < mean(samples), mean(samples))
+      assert(mean(samples) < 0.001, mean(samples))
+//      assert np.var(samples) < .0001, np.var(samples)
+    }
 
     it("should pop values in last-in-first-out order") {
       val stack = new mutable.ArrayStack[Int]
